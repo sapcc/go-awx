@@ -1,0 +1,16 @@
+# build artifacts
+build/
+
+# runtime artifacts (see Makefile)
+/.env
+privkey.pem
+
+# testing artifacts
+/.testdb
+report.html
+testing/conformance-test/storage/
+*.actual
+/*.json
+!*/fixtures/*.json
+/*.yaml
+!Makefile.maker.yaml
