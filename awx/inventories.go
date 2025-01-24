@@ -20,11 +20,6 @@
 package awx
 
 import (
-	"context"
-	"encoding/json"
-	"net/http"
-	"net/url"
-
 	"github.com/gorilla/schema"
 )
 
@@ -53,24 +48,4 @@ type Inventory struct {
 type InventoryListInput struct {
 	Query string `schema:"-,omitempty"`
 	Name  string `schema:"name,omitempty"`
-}
-
-// ListInventories retrieves a list of inventories.
-func (c *client) ListInventories(ctx context.Context, input InventoryListInput) (output InventoryList, err error) {
-	values := url.Values{}
-	err = encode.Encode(&input, values)
-	if err != nil {
-		return
-	}
-	req := http.Request{
-		Method: http.MethodGet,
-		URL:    c.parsedURL.JoinPath("inventories"),
-	}
-	req.URL.RawQuery = values.Encode()
-	body, err := c.DoRequest(&req, []int{http.StatusOK})
-	if err != nil {
-		return
-	}
-	err = json.Unmarshal(body, &output)
-	return
 }
