@@ -20,7 +20,7 @@ package main
 import (
     "fmt"
     "log"
-    "github.com/sapcc/go-awx/awx"
+    awx "github.com/sapcc/go-awx"
 )
 
 func main() {
