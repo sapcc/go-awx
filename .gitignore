@@ -10,7 +10,5 @@ privkey.pem
 report.html
 testing/conformance-test/storage/
 *.actual
-/*.json
 !*/fixtures/*.json
-/*.yaml
 !Makefile.maker.yaml
