@@ -86,7 +86,7 @@ func TestGetJobs(t *testing.T) {
 		}
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{
+		_, err := w.Write([]byte(`{
 
 			"id": 1,
 			"name": "Test Job",
@@ -101,6 +101,7 @@ func TestGetJobs(t *testing.T) {
 			"finished": "2025-01-01T00:00:00Z"
 
 		}`))
+		assert.NoError(t, err)
 	})
 	server := httptest.NewServer(mux)
 	defer server.Close()
@@ -135,9 +136,10 @@ func TestCanCancelJob(t *testing.T) {
 			return
 		}
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{
+		_, err := w.Write([]byte(`{
 			"can_cancel": true
 		}`))
+		assert.NoError(t, err)
 	})
 
 	server := httptest.NewServer(mux)
