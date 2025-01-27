@@ -10,17 +10,9 @@ binaries:
 githubWorkflow:
   global:
     defaultBranch: main
-  license:
-    enabled: true
-  securityChecks:
-    enabled: true
   ci:
     enabled: true
-    runOn:
-      - ubuntu-latest
     coveralls: true
-    prepareMakeTarget: generate
-    ignorePaths: []
 
 golangciLint:
   createConfig: true
