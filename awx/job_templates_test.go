@@ -37,7 +37,7 @@ func TestJobTemplates(t *testing.T) {
 		}
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(`{
+		_, err := w.Write([]byte(`{
 			"results": [
 				{
 					"id": 1,
@@ -50,6 +50,7 @@ func TestJobTemplates(t *testing.T) {
 				}
 			]
 		}`))
+		assert.NoError(t, err)
 	})
 	server := httptest.NewServer(mux)
 	defer server.Close()
@@ -82,7 +83,7 @@ func TestCreateJobTemplatesSchedule(t *testing.T) {
 		}
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusCreated)
-		w.Write([]byte(`{
+		_, err := w.Write([]byte(`{
 			"id": 1,
 			"name": "Test Schedule",
 			"rrule": "FREQ=DAILY;COUNT=1",
@@ -91,6 +92,7 @@ func TestCreateJobTemplatesSchedule(t *testing.T) {
 			"inventory": "",
 			"limit": ""
 		}`))
+		assert.NoError(t, err)
 	})
 	server := httptest.NewServer(mux)
 	defer server.Close()
