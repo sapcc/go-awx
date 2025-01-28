@@ -1,6 +1,6 @@
 module github.com/sapcc/go-awx
 
-go 1.23.5
+go 1.23
 
 require (
 	github.com/gorilla/schema v1.4.1

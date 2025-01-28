@@ -67,7 +67,7 @@ func TestClient_CreateSchedule(t *testing.T) {
 	ctx := context.Background()
 	err = client.Create(ctx, ObjectKey{
 		Resource: "schedules",
-	}, schedule, nil)
+	}, &schedule, nil)
 	assert.NoError(t, err)
 	assert.Equal(t, 1, schedule.ID)
 	assert.Equal(t, schedule.Name, schedule.Name)

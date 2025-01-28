@@ -75,7 +75,7 @@ func TestJobTemplates(t *testing.T) {
 
 func TestCreateJobTemplatesSchedule(t *testing.T) {
 	mux := http.NewServeMux()
-	mux.HandleFunc("POST /job_templates/1/schedules", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("POST /job_templates/1/schedules/", func(w http.ResponseWriter, r *http.Request) {
 		auth := r.Header.Get("Authorization")
 		if auth != "Bearer 12345" {
 			http.Error(w, "Auth header was incorrect", http.StatusUnauthorized)
@@ -89,7 +89,7 @@ func TestCreateJobTemplatesSchedule(t *testing.T) {
 			"rrule": "FREQ=DAILY;COUNT=1",
 			"unified_job_template": 1,
 			"extra_data": "",
-			"inventory": "",
+			"inventory": 1,
 			"limit": ""
 		}`))
 		assert.NoError(t, err)

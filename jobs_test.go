@@ -127,7 +127,7 @@ func TestGetJobs(t *testing.T) {
 
 func TestCanCancelJob(t *testing.T) {
 	mux := http.NewServeMux()
-	mux.HandleFunc("GET /jobs/1/cancel", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("GET /jobs/1/cancel/", func(w http.ResponseWriter, r *http.Request) {
 		auth := r.Header.Get("Authorization")
 		w.Header().Set("Content-Type", "application/json")
 		if auth !=
